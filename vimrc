@@ -41,7 +41,7 @@ Plugin 'vim-scripts/cscope.vim.git'
 " undo plugin F5
 "Plugin 'vim-scripts/Gundo.git'
 Plugin 'vim-scripts/vcscommand.vim'
-"Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 "Plugin 'scrooloose/syntastic.git'
 "Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'ervandew/supertab'
