@@ -129,7 +129,7 @@ let g:syntastic_c_check_header = 1
 " easygrep
 " Number
 " Easygrep
-let g:EasyGrepFileAssociations='/home/wei/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations'
+"let g:EasyGrepFileAssociations='/home/wei/.vim/bundle/EasyGrep/plugin/EasyGrepFileAssociations'
 let g:EasyGrepMode=1
 let g:EasyGrepCommand=1
 let g:EasyGrepRecursive=1
