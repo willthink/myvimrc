@@ -41,7 +41,7 @@ Plugin 'vim-scripts/cscope.vim.git'
 " undo plugin F5
 "Plugin 'vim-scripts/Gundo.git'
 Plugin 'vim-scripts/vcscommand.vim'
-Plugin 'bling/vim-airline'
+"Plugin 'bling/vim-airline'
 "Plugin 'scrooloose/syntastic.git'
 "Plugin 'nathanaelkane/vim-indent-guides.git'
 Plugin 'ervandew/supertab'
@@ -108,6 +108,8 @@ set expandtab
 let g:ctrlp_working_path_mode= 'rw'
 " neocomplcache
 let g:neocomplcache_enable_at_startup = 1
+let g:neocomplcache_enable_smart_case = 1
+let g:neocomplcache_enable_underbar_completion =1
 " taglist
 " let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 let g:Tlist_Show_One_File = 1
@@ -151,9 +153,9 @@ let g:EasyGrepReplaceAllPerFile=0
 " end set plugins
 if has('cscope')
   set cscopetag cscopeverbose
-  if has('quickfix')
-    set cscopequickfix=s-,c-,d-,i-,t-,e-
-  endif
+  "if has('quickfix')
+    "set cscopequickfix=s-,c-,d-,i-,t-,e-
+  "endif
   "if filereadable("cscope.out")
   "   cs add cscope.out
   "endif
@@ -166,4 +168,4 @@ if has('cscope')
   command -nargs=0 Cscope cs add $VIMSRC/src/cscope.out $VIMSRC/src
 endif
 set path=$PWD/**
-set paste
+"set paste
