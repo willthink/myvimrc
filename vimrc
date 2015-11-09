@@ -23,15 +23,12 @@ Plugin 'altercation/vim-colors-solarized.git'
 Plugin 'vim-scripts/taglist.vim.git'
 " find file using fuzzy search: [C-p]
 Plugin 'kien/ctrlp.vim.git'
-" easily get word search <leader><leader>w
-Plugin 'Lokaltog/vim-easymotion.git'
-" do grep: <leader>vv grep current word in this folder
-" :Grep word   grep word in this folder
-Plugin 'EasyGrep'
 " :MRU
 Plugin 'yegappan/mru.git'
 " automatic complete 
 Plugin 'Shougo/neocomplcache.vim.git'
+Plugin 'Shougo/neosnippet'
+Plugin 'Shougo/neosnippet-snippets'
 " multi-line choose: <C-n> to choose, <C-x> to skip, <C-m> to previous
 Plugin 'terryma/vim-multiple-cursors.git'
 "cscope
@@ -47,6 +44,12 @@ Plugin 'vim-scripts/vcscommand.vim'
 Plugin 'ervandew/supertab'
 Plugin 'christoomey/vim-tmux-navigator'
 "Plugin 'myusuf3/numbers.vim'
+"Plugin 'mileszs/ack.vim'
+"Plugin 'MarcWeber/vim-addon-mw-utils'
+"Plugin 'tomtom/tlib_vim'
+"Plugin 'garbas/vim-snipmate'
+"Plugin 'honza/vim-snippets'
+Bundle 'wakatime/vim-wakatime'
 " Now we can turn our filetype functionality back on
 filetype plugin indent on
 set tags=./tags;/
@@ -102,6 +105,7 @@ filetype on
 set tabstop=2
 set shiftwidth=2
 set smartindent
+set noswapfile
 set expandtab
 " set plugins
 " ctrlp
@@ -110,6 +114,25 @@ let g:ctrlp_working_path_mode= 'rw'
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion =1
+" Plugin key-mappings.
+imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>     <Plug>(neosnippet_expand_target)
+
+" SuperTab like snippets behavior.
+"imap <expr><TAB>
+" \ pumvisible() ? "\<C-n>" :
+" \ neosnippet#expandable_or_jumpable() ?
+" \    "\<TAB>" : "\<Plug>(neosnippet_expand_or_jump)"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+\ "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+
+" For conceal markers.
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+
 " taglist
 " let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 let g:Tlist_Show_One_File = 1
@@ -124,7 +147,7 @@ nnoremap <C-u> :MRU<CR>
 " gundo
 nnoremap <F5> :GundoToggle<CR>
 " nerdtree
-let NERDTreeIgnore=['\.o$', '\.a$', '\.so']
+let NERDTreeIgnore=['\.o$', '\.a$', '\.so', '\~$']
 let NERDTreeShowBookmarks=1
 " syntastic
 let g:syntastic_c_check_header = 1
@@ -150,6 +173,7 @@ let g:EasyGrepFileAssociationsInExplorer=0
 let g:EasyGrepExtraWarnings=1
 let g:EasyGrepOptionPrefix='<leader>vy'
 let g:EasyGrepReplaceAllPerFile=0
+let g:ackprg = 'ag --nogroup --nocolor --column'
 " end set plugins
 if has('cscope')
   set cscopetag cscopeverbose
